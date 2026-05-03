@@ -59,6 +59,7 @@ body {
   /* color: #000000; */
   margin: 0;
   background-image: url("res/grid-background.svg");
+  background-repeat: no-repeat;
   /* background-color: #f5f6f7; */
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.1);
@@ -385,7 +386,7 @@ li {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
   }

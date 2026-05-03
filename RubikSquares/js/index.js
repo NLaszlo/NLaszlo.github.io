@@ -63,6 +63,14 @@ function eventNameByDevice(event) {
                     return "touchend";
                     break;
             }
+        } else {
+            if (event.endsWith("down")) {
+                return "pointerdown";
+            } else if (event.endsWith("move")) {
+                return "pointermove";
+            } else if (event.endsWith("up")) {
+                return "pointerup";
+            }
         }
     }
 
