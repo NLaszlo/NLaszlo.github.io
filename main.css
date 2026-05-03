@@ -68,7 +68,7 @@ body {
 
 main {
   margin: 0 auto;
-  width: 1000px;
+  max-width: 1000px;
   padding: 24px;
 }
 
@@ -97,7 +97,7 @@ header {
 
 header nav,
 footer nav {
-  width: 1000px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
@@ -382,5 +382,19 @@ li {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .playable-card {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    width: 100% im;
+    /* grid-row-end: 4;
+    grid-row-start: 1; */
   }
 }
