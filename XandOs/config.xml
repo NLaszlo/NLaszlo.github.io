@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.lnagy.xandos" version="1.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Dots and Boxes</name>
+    <description>
+        Dots and boxes game. The goal is to always close the square. At each round, a player chooses where to draw a line between two adjacent points. A point is scored when a player closes a square.
+    </description>
+    <author email="laszlo.n4gy@gmail.com" href="mailto:laszlo.n4gy@gmail.com">
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="Orientation" value="portrait" />
+</widget>

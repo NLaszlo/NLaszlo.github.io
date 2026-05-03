@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Dots and X and Os</title>
+</head>
+
+<body>
+    <div id="menu" class="fadein">
+        <div class="menucontainer">
+            <div class="imgbutton" id="btnPvp">
+                <p>Player vs Player</p>
+            </div>
+            <div class="imgbutton" id="btnPvai">
+                <p>Player vs Computer</p>
+            </div>
+            <div class="margined">
+                <p>Difficulty:
+                    <select id="aiDifficulty">
+                        <option value="1">Easy</option>
+                        <option value="2">Medium</option>
+                        <option value="4">Hard</option>
+                    </select>
+                </p>
+            </div>
+            <div class="margined">
+                <p>Size of grid:
+                    <select id="gridSize">
+                        <option value="4">4x4</option>
+                        <option value="5">5x5</option>
+                        <option value="6">6x6</option>
+                    </select>
+                </p>
+            </div>
+            <div class="margined">
+                <p>Play as Player 2:
+                    <input type="checkbox" id="chkPlaySecond">
+                </p>
+            </div>
+            <div class="imgbutton" id="btnExit">
+                <p>Exit</p>
+            </div>
+        </div>
+    </div>
+    <div id="score" style="display: none;">
+        <div class="scorecontainer">
+            <table>
+                <tr>
+                    <td>Player 1:</td>
+                    <td style="padding-left: 10px;"><span id="timeForX">0:00:00</span></td>
+                </tr>
+                <tr>
+                    <td>Player 2: </td>
+                    <td style="padding-left: 10px;"><span id="timeForO">0:00:00</span></td>
+                </tr>
+            </table>
+        </div>
+        <table>
+            <tr>
+                <td style="padding-left: 10px;"> 
+                    <div style="
+                        height: 22px;
+                        width: 22px;
+                        background-color: #dd0000;
+                        display: inline-block;
+                        margin-right: 5px;
+                        border: 2px solid black">
+                    </div>:
+                </td>
+                <td><b class="x">0</b></td>
+                <td style="padding-left: 10px;">
+                    <div style="
+                        height: 22px;
+                        width: 22px;
+                        background-color: #0000dd;
+                        display: inline-block;
+                        margin-right: 5px;
+                        border: 2px solid black">
+                    </div>:
+                </td>
+                <td><b class="o">0</b></td>
+            </tr>
+        </table>
+        <div class="bottomcontainer">
+            <div class="imgbutton" id="btnMenu">
+                <img src="img/menu1.png" alt="menu" height="32px" />
+            </div>
+            <div class="imgbutton" id="btnRestart">
+                <img src="img/restart1.png" height="32px" alt="restart" />
+            </div>
+            <div class="imgbutton" id="btnSound">
+                <img src="img/volume1.png" height="32px" alt="sound" style="display: none;" />
+                <img src="img/mute1.png" height="32px" alt="sound" style="display: none;" />
+            </div>
+        </div>
+
+    </div>
+    <script src="cordova.js"></script>
+    <script src="js/p5.min.js"></script>
+    <script src="js/index.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+    /* background-image:linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%); */
+    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    font-size:12px;
+    height:100vh;
+    margin:0px;
+    padding:0px;
+    /* Padding to avoid the "unsafe" areas behind notches in the screen */
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    text-transform:uppercase;
+    width:100%;
+}
+
+.margined p {
+    text-align: center;
+    color: black;
+}
+
+#menu {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(33,33,33,0.1);
+    /* opacity: 0.5; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+
+#score {
+    position: absolute;
+    width: 100%;
+    color: black;
+    /* opacity: 0.5; */
+    bottom: 0;
+
+    /* height: 200px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+}
+
+#score .x {
+    margin-right: 10px;
+}
+
+#aiDifficulty , #gridSize {
+    font-size: large;
+    
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.scorecontainer {
+    border-top: 2px solid;
+    width:100%; 
+    display: flex; 
+    justify-content: center;
+}
+
+.bottomcontainer {
+    /* background-color:#333333; */
+    /* background-color:#4B946A; */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+.menucontainer{
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    box-shadow: 0 0 10px 1px black;
+    -webkit-box-shadow: 0 0 10px 1px black;
+}
+
+.menucontainer > .imgbutton {
+    margin : 16px;
+}
+
+.margined {
+    margin: 0 16px;
+    text-transform: capitalize;
+}
+
+.imgbutton {
+    background-color:#4B946A;
+    color : white;
+    margin: 0 16px;
+
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 5px 0px #000000; 
+    box-shadow: 0px 0px 5px 0px #000000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgbutton:hover{
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+}
+
+.imgbutton > img{
+    margin: 10px;
+}
+
+.imgbutton > p{
+    margin: 10px;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    /* 50% { opacity: 0.4; } */
+    to { opacity: 1.0; }
+}
+
+@-webkit-keyframes fade {
+    from { opacity: 0; }
+    /* 50% { opacity: 0.4; } */
+    to { opacity: 1.0; }
+}
+
+.fadein {
+    animation:fade 2000ms ease;
+    -webkit-animation:fade 2000ms ease;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    /* body {
+        background-image:linear-gradient(to bottom, #585858 0%, #1B1B1B 51%);
+    } */
+}

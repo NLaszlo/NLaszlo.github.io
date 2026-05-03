@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.lnagy.squares" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Squares Puzzle</name>
+    <description>
+        Take the challenge to solve this 2D puzzle. Arrange columns and rows to have the same color, or choose a picture and reassemble it. You can import a picture from your device or use your camera. 
+
+    </description>
+    <author email="laszlo.n4gy@gmail.com" href="mailto:laszlo.n4gy@gmail.com">
+        laszlo nagy
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="mailto:*" />
+    <icon src="res/icon/icon.png" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="FullScreen" value="true" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="HideKeyboardFormAccessoryBar" value="true" />
+</widget>

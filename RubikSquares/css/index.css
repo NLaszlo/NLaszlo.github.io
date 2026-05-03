@@ -1,0 +1,681 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+@font-face {
+    font-family: "HelveticaNeu1";
+    src: url("HelveticaNeue.ttf");
+}
+@font-face {
+    font-family: "Arial1";
+    src: url("arial.ttf");
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    user-select: none;
+    background-color:#E4E4E4;
+    position: fixed;
+    font-family: HelveticaNeu1, 'HelveticaNeue', Helvetica, Arial1 Arial, sans-serif;
+    font-size:12px;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+
+}
+
+body.noanimation {
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );
+    background-attachment:fixed;
+
+    position: static;
+}
+
+.button {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 14px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+    
+}
+
+.btnColor {
+    letter-spacing: 1px;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    background-color:#4B946A;
+    color: white;
+
+    /* transition: transform 0.1s linear; */
+}
+.btnColor:hover{    /* active */
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    background-color: #3b8453;
+}
+
+.kocka{
+    position: absolute;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    border: 1px solid black;
+
+}
+
+.sequencekocka{
+    position: absolute;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    background-color:#4B946A;
+    /* border: 2px solid black; */
+    /* text-align: center; */
+    color: white;
+
+    display: flex;
+    align-items: center;
+}
+.sequencekocka > *{
+    margin: auto;
+}
+
+.messagebox {
+    margin: 50px 25px;
+    position: absolute;
+    
+    z-index: 101;
+    font-size: medium;
+    background: #fff;
+    color: black;
+    padding: 5px 20px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    box-shadow: 0px 0px 50px 10px black;
+
+}
+.messageHtp {
+    z-index: 102;
+    position: absolute;
+}
+
+.gtwrapper {
+    margin: auto;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px 1px black;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /* display: table-cell;
+    vertical-align: middle; */
+    /* border: 1px solid black; */
+}
+.gtwrapper> img {
+    margin-left:  auto;
+    margin-right: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.settingscol2{
+    padding-left: 20px;
+}
+
+.subtext {
+    font-size:8px; 
+    position:absolute; 
+    text-transform:none;
+}
+
+@media(max-width: 321px){
+    .subtext {
+        max-width: 160px;
+    }
+
+    body.noanimation {
+        background-image:none;
+    }
+}
+
+.shadow {
+    -webkit-transition: border 6s linear , width 6s linear 12s, height 6s linear 12s, padding 6s linear 6s, top 18s linear , left 18s linear;
+    -moz-transition: border 6s linear , width 6s linear 12s, height 6s linear 12s, padding 6s linear 6s, top 18s linear , left 18s linear;
+    transition: border 6s linear , width 6s linear 12s, height 6s linear 12s, padding 6s linear 6s, top 18s linear , left 18s linear;
+
+    /* -webkit-transition: border 4s linear , width 4s linear 8s, height 4s linear 8s, padding 4s linear 4s, top 12s linear , left 12s linear;
+    -moz-transition: border 4s linear , width 4s linear 8s, height 4s linear 8s, padding 4s linear 4s, top 12s linear , left 12s linear;
+    transition: border 4s linear , width 4s linear 8s, height 4s linear 8s, padding 4s linear 4s, top 12s linear , left 12s linear; */
+
+    /* -webkit-transition: border 8s linear , padding 8s linear 8s, top 16s linear , left 16s linear;
+    -moz-transition: border 8s linear , padding 8s linear 8s, top 16s linear , left 16s linear;
+    transition: border 8s linear , padding 8s linear 8s, top 16s linear , left 16s linear; */
+
+    /* outline-color: rgba(0,0,0,0.2);
+        outline-style: solid; */
+}
+
+#shadow2 , #shadow1{
+    position: absolute;
+    z-index: -2;
+    /* border-color:rgba(0,0,0,0.1); */
+    border-color:rgba(75,118,148, 0.15);
+    border-style: solid;
+    border-width: 0px;
+    height: 0px;
+    width: 0px;
+}
+#shadow2 {
+    border-color:rgba(96,148,75,0.15);
+}
+
+#header {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+
+    background-color: rgba(0,0,0,0.8);
+    color: #fff;
+    height: 50px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#blanket {
+    background-color:#111;
+    opacity: 0.65;
+    filter:alpha(opacity=65);
+    position: fixed;
+    z-index: 100;
+    top:50px;
+    left:0px;
+    width:100%;
+    height: 100%;
+
+    animation: game 0.8s linear;
+}
+
+#imgHand {
+    pointer-events: none;
+    z-index: 103;
+    position: absolute;
+}
+#imgHand.rotated{
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+}
+#highlight{
+    box-shadow: 0px 0px 50px 10px black;
+}
+
+#map {
+    position: absolute;
+    /* overflow: hidden; */
+    top: 50px;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 2;
+    border-bottom-left-radius: 12px;
+    padding: 0 10px 10px 10px;
+
+    transition: width 0.2s ease, height 0.2s ease;
+}
+#map.down{
+    padding: 5px 10px 10px 10px;
+}
+#map > img.fadein{
+    animation: game 100ms linear 200ms backwards;
+}
+/* #map > img{
+     transition: scale 100ms linear; 
+}*/
+#map > img.fadein:active{
+    transform: scale(0.90);
+    -webkit-transform: scale(0.90);
+}
+
+#map > table , #map > img {
+    height: 100%;
+    width: 100%;
+}
+
+#lblVictory{
+    font-size: large;
+    margin-top: 14px;
+    font-weight: bolder;
+    animation: victor 1000ms linear infinite alternate;
+}
+@keyframes victor{
+    from {
+        color : white;
+    }
+    to {
+        color: yellow;
+    }
+}
+
+table.minitable {
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    font-size: x-large;
+}
+
+table.startmenutable{
+    width: 100%;
+}
+
+.startmenutable .gtwrapper {
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+
+    transition: transform 99ms linear; 
+}
+.startmenutable .gtwrapper:active{
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+   
+}
+/* .startmenutable .gtwrapper>img {
+    
+} */
+
+#startmenu{
+    /* margin-top: 50px; */
+    /* overflow: visible; */
+
+    /* overflow-x                 : hidden;
+    overflow-y                 : scroll;
+    -webkit-overflow-scrolling : touch;
+    overflow-scrolling         : touch;
+*/
+    animation: game 0.4s linear; 
+}
+
+#divGetImage{
+    display:flex; 
+    flex-direction:column; 
+    justify-content:space-evenly; 
+    align-items:center
+}
+#btnTakePicture {
+    height: 35%;
+    width: 35%; 
+    /* padding: 10px; */
+    background-image: url("../img/icon_camera.png");
+    background-size: 100% 100%;
+}
+#btnLoadFromGal{
+    height: 35%;
+    width: 35%; 
+    /* padding: 10px; */
+    background-image: url("../img/icon_gallery.png");
+    background-size: 100% 100%;
+}
+
+#btnExit {
+    opacity: 0.4;
+    background-color: grey;
+
+    animation: btnExit 100ms linear 500ms backwards;
+}
+@keyframes btnExit{
+    from {
+        opacity: 0;
+    }
+}
+
+#btnSettings{
+    display: inline-block;
+     width: 34px;
+     height: 34px;
+    background-image: url(../img/icon_settings.png);
+    background-size: 100% 100%; 
+
+    position: absolute;
+    float: right;
+    right: 32px;
+    margin-top: -2px;
+}
+
+#btnSoundOn {
+    width: 30px;
+    height: 30px;
+    /* padding-left: 4px; */
+}
+.soundon {
+    background-image: url(../img/sound.png);
+    background-size: 30px 60px;
+    background-repeat: no-repeat;
+}
+.soundoff {
+    background-image: url(../img/sound.png);
+    background-size: 30px 60px;
+    background-position-y: -30px;
+    background-repeat: no-repeat;
+}
+
+table.tableSettings {
+    width: 100%; 
+    max-width: 640px;
+    padding-bottom: 20px;
+    /* font-size: larger;  */
+}
+table.tableSettings tr>td {
+    padding-top: 10px; 
+}
+table.tableSettings tr:last-child>td {
+    padding-bottom: 10px; 
+}
+
+#menu{
+    /* transition: all 2s ease-out; */
+    /* width: 100px; */
+    margin: auto;
+    
+}
+/* #menu.anim {
+    animation: menu 0.8s ease-out;
+} */
+#menu.slideright {
+    animation: slideright 0.2s linear;
+}
+@keyframes menu{
+    0% {
+        width: 80px;
+        opacity: 0.1;
+    }
+    50% {
+        width: 100%;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes slideright{
+  from {
+    transform:  translateX(-100%);
+  } 
+}
+
+#game{
+    /* overflow: hidden;
+    overflow-y : hidden; */
+    overflow: hidden;
+
+    animation: game 0.4s linear;
+}
+@keyframes game {
+    from {opacity: 0.1;}
+}
+
+#settings{
+    animation: slideleft 0.2s linear;
+}
+@keyframes slideleft {
+    from {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+    }
+}
+
+#gameFrame{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    overflow: hidden;
+
+}
+
+#btnBack{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+#btnNew{
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+
+}
+
+h1 {
+    font-size:42px;
+    font-weight:normal;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+    color: grey;
+
+    letter-spacing: 4px;
+    text-shadow: -1px -1px 1px #111,
+    2px 2px 1px #363636;
+    text-rendering: optimizeLegibility;
+}
+/* 
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+} */
+
+h2 {
+    
+    text-rendering: optimizeLegibility;
+    font-weight: normal;
+    text-align: center;
+
+    margin: auto;
+}
+#startmenu h2{
+    font-size: 20px;
+}
+#settings h2{
+    font-size: 32px;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+
+/*   select  */
+/* -------------------- Page Styles (not required) */
+/* div { margin: 20px; } */
+
+/* -------------------- Select Box Styles: bavotasan.com Method (with special adaptations by ericrasch.com) */
+/* -------------------- Source: http://bavotasan.com/2011/style-select-box-using-only-css/ */
+.styled-select {
+   background: url(../img/15xvbd5.png) no-repeat 92% 0;
+   display: inline-block;
+   /* height: 30px;
+   overflow: hidden;
+    width: 240px; */
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   /* font-size: 14px; */
+   height: 30px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 100%;
+}
+
+/* .styled-select.slate {
+   background: url(../img/2e3ybe1.jpg) no-repeat right center;
+   height: 34px;
+   width: 240px;
+}
+
+.styled-select.slate select {
+   border: 1px solid #ccc;
+   font-size: 16px;
+   height: 34px;
+   width: 268px;
+} 
+
+.rounded {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+}
+*/
+.semi-square {
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+}
+
+/* -------------------- Colors: Background */
+.slate   { background-color: #ddd; }
+.color    { background-color: #4B946A; }
+
+/* -------------------- Colors: Text */
+.slate select   { color: #000; }
+.color select    { 
+    color: #fff;
+}
+.color select option { 
+    color: #fff;
+    background-color: #4B946A; 
+}
+
+
+/* -------------------- Select Box Styles: danielneumann.com Method */
+/* -------------------- Source: http://danielneumann.com/blog/how-to-style-dropdown-with-css-only/ */
+
+/* Checkmark */
+/* Customize the label (the container) */
+.container {
+    /* display: block; */
+    position: relative;
+    padding-left: 35px;
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    /* font-size: 22px; */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #4B946A;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .container .checkmark:after {
+    left: 9px;
+    top: 4px;
+    width: 8px;
+    height: 15px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    /* -webkit-transform: rotate(45deg); */
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

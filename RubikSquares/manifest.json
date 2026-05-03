@@ -1,0 +1,18 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Squares Puzzle",
+  "short_name": "Squares Puzzle",
+  "version": "com.lnagy.squares",
+  "description": "Take the challenge to solve this 2D puzzle. Arrange columns and rows to have the same color, or choose a picture and reassemble it. You can import a picture from your device or use your camera.",
+  "author": "laszlo nagy",
+  "icons": [
+    {
+      "src": "res/icon/icon.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    }
+  ],
+  "orientation": "portrait",
+  "start_url": "index.html"
+}

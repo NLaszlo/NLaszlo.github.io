@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Dots and Boxes",
+  "short_name": "Dots and Boxes",
+  "version": "com.lnagy.xandos",
+  "description": "Dots and boxes game. The goal is to always close the square. At each round, a player chooses where to draw a line between two adjacent points. A point is scored when a player closes a square.",
+  "icons": [],
+  "orientation": "portrait",
+  "start_url": "index.html"
+}

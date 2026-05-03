@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Squares</title>
+
+</head>
+
+<body>
+
+    <div id="blanket" style="display:none;"></div>
+    <div id="header" style="visibility:hidden">
+        <div id="btnBack" class="btnColor ">
+            Back
+        </div>
+        <div id="lblVictory" style="visibility: hidden">
+            Victory !
+        </div>
+        <div id="btnNew" class="btnColor" style="visibility: hidden">
+            New
+        </div>
+    </div>
+
+    <div id="menu">
+        <h1>Squares<span style="font-size:82px; color:#4B946A">.</span></h1>
+        <div>
+            <div id="btnStart" class="button btnColor">
+                New Game
+            </div>
+            <div id="btnHtp" class="button btnColor">
+                How to Play
+            </div>
+            <div style="margin-left: 30px; margin-right:30px; margin-top:30px; text-align: center">
+                <div style="display: inline-block;">
+                    <span style="margin-right: 5px">
+                        Size:
+
+                    </span>
+                    <div id="selectSize" class="styled-select semi-square color" style="width: 64px;">
+                        <select class="color">
+                            <option value="3">3x3</option>
+                            <option value="4">4x4</option>
+                            <option value="5">5x5</option>
+                            <option value="6">6x6</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div id="btnSettings" class="btnColor">
+                    
+                </div>
+            </div>
+            <!-- <div style="position: absolute; bottom: 30px; width: 100%;">
+                <div id="btnExit" class="button btnColor">
+                    Exit
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div id="startmenu" style="display:none;">
+        <h2 style="margin-top:80px; margin-bottom: 25px; text-transform: none;">Load image:</h2>
+        <table class="startmenutable">
+            <tr>
+                <td>
+                    <div id="divGetImage" class="gtwrapper">
+                        <div id="btnTakePicture" title="Camera"></div>
+                        <div style="width:100%; border-top: 1px solid grey"></div>
+                        <div id="btnLoadFromGal" title="Gallery"></div>
+                    </div>
+                    <input type="file" id="imgInput" hidden accept="image/*" />
+                </td>
+                <td>
+                    <div id="imgPreview" class="gtwrapper">
+                        <img src="img/no-image.png" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <table class="startmenutable"></table>
+
+    </div>
+    <div id="game" style="display:none;">
+        <div id="map">
+        </div>
+        <div id="gameFrame">
+        </div>
+    </div>
+    <div id="settings" style="display:none;">
+        <h2 style=" margin-top: 80px; margin-bottom: 30px; ">Settings</h2>
+
+        <table cellspacing="10" class="gtwrapper tableSettings">
+            <tr>
+                <td colspan="4">
+                    <div style="margin-right: 30px;">
+                        Sound effects
+                    </div>
+                </td>
+                <td>
+                    <div class="settingscol2">
+                        <div id="btnSoundOn" class="btnColor soundon">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div>
+                        Image quality
+                    </div>
+                </td>
+                <td>
+                    <div class="settingscol2">
+                        <div id="btnImgQuality" class="styled-select semi-square color" style="width: 90px; background-position-x: 95%">
+                            <select class="color">
+                                <option value="50">Low</option>
+                                <option value="75">Medium</option>
+                                <option value="100">High</option>
+                            </select>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div>
+                        Unsolvable grids
+                        <p class="subtext">Grids cannot be solved</p>
+                    </div>
+                </td>
+                <td>
+                    <div class="settingscol2">
+                        <label class="container">
+                            <input type="checkbox" id="chkUnsolvable" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/startMenu.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/squareGrid.js"></script>
+    <script type="text/javascript" src="js/howtoplay.js"></script>
+
+</body>
+
+</html>
